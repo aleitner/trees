@@ -7,8 +7,8 @@ type BinarySearchTree struct {
 }
 
 type BinarySearchTreeNode struct {
-	data byte
-	left *BinarySearchTreeNode
+	data  byte
+	left  *BinarySearchTreeNode
 	right *BinarySearchTreeNode
 }
 
