@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func main() {
 	tree := NewBinarySearchTree()
 	tree.insert(12)
@@ -12,5 +16,9 @@ func main() {
 	tree.insert(2)
 	tree.insert(5)
 
-	tree.print()
+	tree.printInOrder()
+	fmt.Println("")
+	tree.printPreOrder()
+	fmt.Println("")
+	tree.printPostOrder()
 }

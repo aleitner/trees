@@ -52,20 +52,56 @@ func (t *BinarySearchTreeNode) insert(data byte) {
 	}
 }
 
-func (t *BinarySearchTree) print() {
+func (t *BinarySearchTree) printInOrder() {
 	if t.root != nil {
 		t.mtx.Lock()
-		t.root.print()
+		t.root.printInOrder()
 		t.mtx.Unlock()
 	}
 }
 
-func (t *BinarySearchTreeNode) print() {
+func (t *BinarySearchTreeNode) printInOrder() {
 	if t == nil {
 		return
 	}
 
-	t.left.print()
+	t.left.printInOrder()
 	fmt.Printf("%d ", t.data)
-	t.right.print()
+	t.right.printInOrder()
+}
+
+func (t *BinarySearchTree) printPreOrder() {
+	if t.root != nil {
+		t.mtx.Lock()
+		t.root.printPreOrder()
+		t.mtx.Unlock()
+	}
+}
+
+func (t *BinarySearchTreeNode) printPreOrder() {
+	if t == nil {
+		return
+	}
+
+	fmt.Printf("%d ", t.data)
+	t.left.printPreOrder()
+	t.right.printPreOrder()
+}
+
+func (t *BinarySearchTree) printPostOrder() {
+	if t.root != nil {
+		t.mtx.Lock()
+		t.root.printPostOrder()
+		t.mtx.Unlock()
+	}
+}
+
+func (t *BinarySearchTreeNode) printPostOrder() {
+	if t == nil {
+		return
+	}
+
+	t.left.printPostOrder()
+	t.right.printPostOrder()
+	fmt.Printf("%d ", t.data)
 }
