@@ -1,9 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sync"
+)
 
 type BinarySearchTree struct {
 	root *BinarySearchTreeNode
+	mtx sync.Mutex
 }
 
 type BinarySearchTreeNode struct {
@@ -26,7 +30,9 @@ func (t *BinarySearchTree) insert(data byte) {
 	if t.root == nil {
 		t.root = NewBinarySearchTreeNode(data)
 	} else {
+		t.mtx.Lock()
 		t.root.insert(data)
+		t.mtx.Unlock()
 	}
 }
 
@@ -48,7 +54,9 @@ func (t *BinarySearchTreeNode) insert(data byte) {
 
 func (t *BinarySearchTree) print() {
 	if t.root != nil {
+		t.mtx.Lock()
 		t.root.print()
+		t.mtx.Unlock()
 	}
 }
 
